@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eccl.cloud.demo.dao.DrDbProcessLineMapper">
+  <resultMap id="BaseResultMap" type="com.eccl.cloud.demo.domain.DrDbProcessLine">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="PROCESS_ID" jdbcType="VARCHAR" property="processId" />
+    <result column="SIGN_DATE" jdbcType="TIMESTAMP" property="signDate" />
+    <result column="PLAN_PERSON" jdbcType="VARCHAR" property="planPerson" />
+    <result column="PLAN_CELLPHONE" jdbcType="VARCHAR" property="planCellphone" />
+    <result column="ACT_USER_ID" jdbcType="VARCHAR" property="actUserId" />
+    <result column="ACT_USER_NAME" jdbcType="VARCHAR" property="actUserName" />
+    <result column="ACT_BEGINTIME" jdbcType="TIMESTAMP" property="actBegintime" />
+    <result column="ACT_ENDDATE" jdbcType="TIMESTAMP" property="actEnddate" />
+    <result column="IS_DEVI" jdbcType="DECIMAL" property="isDevi" />
+    <result column="REASON" jdbcType="VARCHAR" property="reason" />
+    <result column="PL1" jdbcType="VARCHAR" property="pl1" />
+    <result column="PL2" jdbcType="VARCHAR" property="pl2" />
+    <result column="PL3" jdbcType="VARCHAR" property="pl3" />
+    <result column="CREATE_USER_NAME" jdbcType="VARCHAR" property="createUserName" />
+    <result column="CREATE_USER_ID" jdbcType="VARCHAR" property="createUserId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+    <result column="OPERATE_TIME" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="VERSION" jdbcType="VARCHAR" property="version" />
+    <result column="PLAN_PERSONID" jdbcType="VARCHAR" property="planPersonid" />
+    <result column="POSITION" jdbcType="VARCHAR" property="position" />
+    <result column="LIMIT_NUM" jdbcType="DECIMAL" property="limitNum" />
+    <result column="PLAN_PERSON_DUDY" jdbcType="VARCHAR" property="planPersonDudy" />
+    <result column="ACT_PERSON_DUDY" jdbcType="VARCHAR" property="actPersonDudy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PROCESS_ID, SIGN_DATE, PLAN_PERSON, PLAN_CELLPHONE, ACT_USER_ID, ACT_USER_NAME, 
+    ACT_BEGINTIME, ACT_ENDDATE, IS_DEVI, REASON, PL1, PL2, PL3, CREATE_USER_NAME, CREATE_USER_ID, 
+    CREATE_TIME, OPERATOR, OPERATE_TIME, VERSION, PLAN_PERSONID, POSITION, LIMIT_NUM, 
+    PLAN_PERSON_DUDY, ACT_PERSON_DUDY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DR_DB_PROCESS_LINE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from DR_DB_PROCESS_LINE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.eccl.cloud.demo.domain.DrDbProcessLine">
+    insert into DR_DB_PROCESS_LINE (ID, PROCESS_ID, SIGN_DATE, 
+      PLAN_PERSON, PLAN_CELLPHONE, ACT_USER_ID, 
+      ACT_USER_NAME, ACT_BEGINTIME, ACT_ENDDATE, 
+      IS_DEVI, REASON, PL1, 
+      PL2, PL3, CREATE_USER_NAME, 
+      CREATE_USER_ID, CREATE_TIME, OPERATOR, 
+      OPERATE_TIME, VERSION, PLAN_PERSONID, 
+      POSITION, LIMIT_NUM, PLAN_PERSON_DUDY, 
+      ACT_PERSON_DUDY)
+    values (#{id,jdbcType=VARCHAR}, #{processId,jdbcType=VARCHAR}, #{signDate,jdbcType=TIMESTAMP}, 
+      #{planPerson,jdbcType=VARCHAR}, #{planCellphone,jdbcType=VARCHAR}, #{actUserId,jdbcType=VARCHAR}, 
+      #{actUserName,jdbcType=VARCHAR}, #{actBegintime,jdbcType=TIMESTAMP}, #{actEnddate,jdbcType=TIMESTAMP}, 
+      #{isDevi,jdbcType=DECIMAL}, #{reason,jdbcType=VARCHAR}, #{pl1,jdbcType=VARCHAR}, 
+      #{pl2,jdbcType=VARCHAR}, #{pl3,jdbcType=VARCHAR}, #{createUserName,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, 
+      #{operateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=VARCHAR}, #{planPersonid,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{limitNum,jdbcType=DECIMAL}, #{planPersonDudy,jdbcType=VARCHAR}, 
+      #{actPersonDudy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eccl.cloud.demo.domain.DrDbProcessLine">
+    insert into DR_DB_PROCESS_LINE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="processId != null">
+        PROCESS_ID,
+      </if>
+      <if test="signDate != null">
+        SIGN_DATE,
+      </if>
+      <if test="planPerson != null">
+        PLAN_PERSON,
+      </if>
+      <if test="planCellphone != null">
+        PLAN_CELLPHONE,
+      </if>
+      <if test="actUserId != null">
+        ACT_USER_ID,
+      </if>
+      <if test="actUserName != null">
+        ACT_USER_NAME,
+      </if>
+      <if test="actBegintime != null">
+        ACT_BEGINTIME,
+      </if>
+      <if test="actEnddate != null">
+        ACT_ENDDATE,
+      </if>
+      <if test="isDevi != null">
+        IS_DEVI,
+      </if>
+      <if test="reason != null">
+        REASON,
+      </if>
+      <if test="pl1 != null">
+        PL1,
+      </if>
+      <if test="pl2 != null">
+        PL2,
+      </if>
+      <if test="pl3 != null">
+        PL3,
+      </if>
+      <if test="createUserName != null">
+        CREATE_USER_NAME,
+      </if>
+      <if test="createUserId != null">
+        CREATE_USER_ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="operator != null">
+        OPERATOR,
+      </if>
+      <if test="operateTime != null">
+        OPERATE_TIME,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="planPersonid != null">
+        PLAN_PERSONID,
+      </if>
+      <if test="position != null">
+        POSITION,
+      </if>
+      <if test="limitNum != null">
+        LIMIT_NUM,
+      </if>
+      <if test="planPersonDudy != null">
+        PLAN_PERSON_DUDY,
+      </if>
+      <if test="actPersonDudy != null">
+        ACT_PERSON_DUDY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="processId != null">
+        #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null">
+        #{signDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planPerson != null">
+        #{planPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="planCellphone != null">
+        #{planCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="actUserId != null">
+        #{actUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="actUserName != null">
+        #{actUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="actBegintime != null">
+        #{actBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actEnddate != null">
+        #{actEnddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDevi != null">
+        #{isDevi,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="pl1 != null">
+        #{pl1,jdbcType=VARCHAR},
+      </if>
+      <if test="pl2 != null">
+        #{pl2,jdbcType=VARCHAR},
+      </if>
+      <if test="pl3 != null">
+        #{pl3,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="planPersonid != null">
+        #{planPersonid,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="limitNum != null">
+        #{limitNum,jdbcType=DECIMAL},
+      </if>
+      <if test="planPersonDudy != null">
+        #{planPersonDudy,jdbcType=VARCHAR},
+      </if>
+      <if test="actPersonDudy != null">
+        #{actPersonDudy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eccl.cloud.demo.domain.DrDbProcessLine">
+    update DR_DB_PROCESS_LINE
+    <set>
+      <if test="processId != null">
+        PROCESS_ID = #{processId,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null">
+        SIGN_DATE = #{signDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planPerson != null">
+        PLAN_PERSON = #{planPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="planCellphone != null">
+        PLAN_CELLPHONE = #{planCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="actUserId != null">
+        ACT_USER_ID = #{actUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="actUserName != null">
+        ACT_USER_NAME = #{actUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="actBegintime != null">
+        ACT_BEGINTIME = #{actBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actEnddate != null">
+        ACT_ENDDATE = #{actEnddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDevi != null">
+        IS_DEVI = #{isDevi,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null">
+        REASON = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="pl1 != null">
+        PL1 = #{pl1,jdbcType=VARCHAR},
+      </if>
+      <if test="pl2 != null">
+        PL2 = #{pl2,jdbcType=VARCHAR},
+      </if>
+      <if test="pl3 != null">
+        PL3 = #{pl3,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null">
+        CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        OPERATOR = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="planPersonid != null">
+        PLAN_PERSONID = #{planPersonid,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        POSITION = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="limitNum != null">
+        LIMIT_NUM = #{limitNum,jdbcType=DECIMAL},
+      </if>
+      <if test="planPersonDudy != null">
+        PLAN_PERSON_DUDY = #{planPersonDudy,jdbcType=VARCHAR},
+      </if>
+      <if test="actPersonDudy != null">
+        ACT_PERSON_DUDY = #{actPersonDudy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eccl.cloud.demo.domain.DrDbProcessLine">
+    update DR_DB_PROCESS_LINE
+    set PROCESS_ID = #{processId,jdbcType=VARCHAR},
+      SIGN_DATE = #{signDate,jdbcType=TIMESTAMP},
+      PLAN_PERSON = #{planPerson,jdbcType=VARCHAR},
+      PLAN_CELLPHONE = #{planCellphone,jdbcType=VARCHAR},
+      ACT_USER_ID = #{actUserId,jdbcType=VARCHAR},
+      ACT_USER_NAME = #{actUserName,jdbcType=VARCHAR},
+      ACT_BEGINTIME = #{actBegintime,jdbcType=TIMESTAMP},
+      ACT_ENDDATE = #{actEnddate,jdbcType=TIMESTAMP},
+      IS_DEVI = #{isDevi,jdbcType=DECIMAL},
+      REASON = #{reason,jdbcType=VARCHAR},
+      PL1 = #{pl1,jdbcType=VARCHAR},
+      PL2 = #{pl2,jdbcType=VARCHAR},
+      PL3 = #{pl3,jdbcType=VARCHAR},
+      CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=VARCHAR},
+      OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=VARCHAR},
+      PLAN_PERSONID = #{planPersonid,jdbcType=VARCHAR},
+      POSITION = #{position,jdbcType=VARCHAR},
+      LIMIT_NUM = #{limitNum,jdbcType=DECIMAL},
+      PLAN_PERSON_DUDY = #{planPersonDudy,jdbcType=VARCHAR},
+      ACT_PERSON_DUDY = #{actPersonDudy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <!-- 侧屏，显示带班信息，所有厂 -->
+ <select id="getDrDbInfo" resultMap="BaseResultMap" parameterType="com.eccl.cloud.demo.domain.DrDbProcessLineSearch" >
+ 	select e.* from (select b.fact_id,b.fact_name,a.process_id, a.sign_date, a.plan_person, a.plan_cellphone, a.act_user_id, a.act_user_name, a.act_begintime, a.act_enddate, a.is_devi, a.reason, a.pl1, a.pl2, a.pl3, a.id, a.create_user_name, a.create_user_id, a.create_time, a.operator, a.operate_time, a.version, a.plan_personid, a.position, a.limit_num, a.plan_person_dudy, a.act_person_dudy
+    from dr_db_process_line a
+    join dr_db_process b 
+	on a.process_id=b.id  and to_char(SIGN_DATE,'yyyy-mm-dd') = #{signDateStr,jdbcType=VARCHAR} ) e  right join (  
+	select id from dr_sendmessage_address d where on_duty='1' and  parent_org_id in (    
+	select id from dr_sendmessage_address where org_code in ('dl','qt')) order by to_number(flow_state) asc
+	) c  on c.id=e.fact_id
+  </select>
+</mapper>
